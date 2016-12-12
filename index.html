@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	
+	<!--<base href="http://localhost:8000/">-->
+	<!--<base href="http://ottawazinetest.azurewebsites.net/">-->
+	
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<meta http-equiv="Content-Security-Policy" content="script-src * 'unsafe-inline' 'unsafe-eval'; connect-src * 'unsafe-eval'; object-src 'self'; style-src * 'unsafe-inline';" >
+	<!-- angular -->
+	<script type="text/javascript" src="lib/angular.min.js"></script>
+	<script type="text/javascript" src="lib/angular-route.min.js"></script>
+	<script type="text/javascript" src="lib/angular-sanitize.min.js"></script>
+	<script type="text/javascript" src="lib/angular-resource.min.js"></script>
+	<script type="text/javascript" src="lib/angular-ui-router.min.js"></script>
+	<script type="text/javascript" src="lib/angular-touch.min.js"></script>
+
+
+	<!-- bootstrap -->
+	<script src="lib/bootstrap/js/jquery.min.js"></script>
+	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">	
+	<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+
+	<!-- js -->
+	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/controllers.js"></script>
+	<script type="text/javascript" src="js/service.js"></script>
+	<script type="text/javascript" src="js/directive.js"></script>
+	<script type="text/javascript" src="js/wechatShare.js"></script>
+
+	<!-- css -->
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+
+	<script src="cordova.js"></script>
+
+
+	<script>var jq = $.noConflict();</script>
+
+
+</head>
+
+<body ng-app="wraf">
+<div class="wrapper">
+
+
+	<div ui-view></div>
+
+
+	<nav class="footer text-center nav navbar-fixed-bottom" ng-class="[{'footer-bg-1':!displayContent}, {'footer-bg-2':displayContent}]" ng-controller="footerCtrl">		
+		<ul class="nav navbar-nav">
+			<li class="footer-item" ng-repeat="(index,item) in tagGroup">
+				<a ui-sref = "{{item}}">
+					<div ng-class="{'footer-icon-wrapper': index !== 0}">
+						<img class="footer-icon" ng-src="img/icon_{{index+1}}.png" alt="{{item}}" ng-hide="$state.current.name == '{{item}}'" />
+						<img class="footer-icon" ng-src="img/icon_{{index+1}}_or.png" alt="{{item}}" ng-show="$state.current.name == '{{item}}'" />
+					</div>
+
+				</a>
+			</li>
+		</ul>
+	</nac>	
+</div>
+
+
+</body>
+</html>

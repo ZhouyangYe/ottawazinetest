@@ -1,0 +1,67 @@
+
+
+
+
+<nav class="navbar navbar-default navbar-fixed-top">
+	<span class="glyphicon glyphicon-menu-left topbar-back" onclick="history.back()"></span>
+	
+	<a href="#/" title="Ottawazine">
+	    <img src="img/ottawazine_app.png" alt="{{news.title}}" class="navbar-topIcon"/>
+    </a>
+
+
+	<a href="#/" title="Ottawazine">
+		<span class="glyphicon glyphicon-home topbar-btn"></span>
+	</a>
+</nav>
+
+	<div ng-hide="post.content" class="loader">
+		<h1 class="loader-text"><img src="img/loader.gif"></h1>
+	</div>
+
+
+<section class="container-fluid postContentBg" ng-hide="!post.content">
+	
+	
+
+
+
+	<h2 class="postContentTitle" ng-bind-html="post.title"></h2>
+
+	<div ng-hide="!post.content" class="postContentInfo-warpper">
+		<p class="postContentInfo" ng-hide="!post.author.name">{{post.author.name}}</p>
+		<p class="postContentInfo" ng-hide="!post.categories">{{post.categories[0].title}}</p>
+		<p class="postContentInfo" ng-hide="!post.date">{{post.date | date:"yyyy-MM-dd"}}</p>
+	</div>
+
+
+	<!--<p class="postContentAuthor" ng-hide="!post.tags">标签：
+		<span ng-repeat="item in post.tags">{{item.title}}</span>
+	</p>-->
+
+	<div ng-if="featuredImageUrl" class="postFeaturedImg">
+	    <img ng-src="{{featuredImageUrl}}" alt="{{post.title}}" />
+	</div>
+
+	<div class="postContent" ng-bind-html="post.content" post-content-display></div>
+
+
+	<div ng-show="post.content" class="postContent-share">
+
+		<span>分享到
+			<img social-share-buttons class="postContent-share-icon" src="img/wechat_share.jpg" alt="对话" title="post.title" thumb-url="post.thumbnail" webpage-url="post.url" type='0' slug="post.slug"> 
+			<img social-share-buttons class="postContent-share-icon" ng-src="img/wechat_moment.jpg" alt="朋友圈" title="post.title" thumb-url="post.thumbnail" webpage-url="post.url" type='1' slug="post.slug"> 
+		</span>
+
+		<!--<social-share-buttons title="post.title" thumb-url="post.thumbnail" webpage-url="post.url"></social-share-buttons>-->
+	</div>
+
+	<div ng-hide="relatedPost.length == 0" class="postContentRelated">
+		<ul>
+			<li ng-repeat="post in relatedPost"><a class="postContentRelated-title" href="{{post.url}}" ng-bind-html="post.title" class="postTitle"></a></li>			
+		</ul>
+	</div>
+</section>
+
+
+

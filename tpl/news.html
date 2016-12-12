@@ -1,0 +1,56 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="col-xs-2">
+		<a href="#/">
+		<span class="glyphicon glyphicon-menu-left topbar-back"></span></a>
+	</div>
+
+	<div class="topbar-center">
+		<a href="#/">
+			<img ng-src="{{titleImg}}" alt="{{title}}" class="navbar-topIcon navbar-topIcon-sm"/>
+			<span class="topbar-title">{{title}}</span>
+		</a>
+	</div>
+    <a ui-sref = "search"><!--href="/#search"-->
+    	<button class="topbar-searchIcon search-btn"><span class="glyphicon glyphicon-search"></span></button>
+    </a> 	
+</nav>
+<div class="main_wrapper">	
+
+<section class="news-wrapper" detect-bottom="loadMore()" refresh-news="loadNews()">
+	<div class="loader-top" ng-hide="doneLoading">
+		<h1 class="loader-text"><img src="img/loader.gif"></h1>
+	</div>
+    <div class="news-item-main" ng-repeat="news in newsList">
+    	<div class="media">
+
+
+			<!-- 从JSON文件里面获取thumbnail图片 -->
+			<div class="media-left">
+				<div class="newsimg">
+					<a href="#/news/{{news.id}}/{{theQquery}}/{{page}}">  <!--ng-if="news.thumbnail" -->
+						<img ng-src="{{news.thumbnail}}" alt="{{news.title}}" class="news-item-img"/>
+						<!-- 如不成功，检查一下本行代码的src这种写法对不对对不对 -->
+					</a>
+				</div>
+			</div>
+
+			<!-- 从JSON文件里面获取文字信息 -->
+			<div class="media-body">
+				<a href="#/news/{{news.id}}/{{theQquery}}/{{page}}" ng-bind-html="news.title" class="postTitle"></a>
+				<div class="postSubtitle-wrapper">
+					<a href="#/news/{{news.id}}/{{theQquery}}/{{page}}" ng-bind-html="news.author.name" class="postSubtitle"></a>
+					<a href="#/news/{{news.id}}/{{theQquery}}/{{page}}" ng-bind-html="news.date" class="postSubtitle"></a>
+				</div>
+			</div>
+		</div>
+		<!--<hr>-->
+	</div>
+
+	<div class="loader">
+		<h1 class="loader-text"><img src="img/loader.gif"></h1>
+	</div>
+
+	
+</section>
+</div>
